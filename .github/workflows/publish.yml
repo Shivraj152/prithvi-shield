@@ -17,6 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Lowercase Repository Owner
+        run: |
+          echo "REPO_OWNER=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -35,18 +39,18 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/prithvi-shield-frontend:latest
+          tags: ghcr.io/${{ env.REPO_OWNER }}/prithvi-shield-frontend:latest
 
       - name: Build and push backend image
         uses: docker/build-push-action@v4
         with:
           context: ./backend
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/prithvi-shield-backend:latest
+          tags: ghcr.io/${{ env.REPO_OWNER }}/prithvi-shield-backend:latest
 
       - name: Build and push ml-service image
         uses: docker/build-push-action@v4
         with:
           context: ./ml-service
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/prithvi-shield-ml:latest
+          tags: ghcr.io/${{ env.REPO_OWNER }}/prithvi-shield-ml:latest

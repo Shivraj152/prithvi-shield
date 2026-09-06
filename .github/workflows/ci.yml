@@ -22,13 +22,13 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Build backend
         working-directory: backend
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Set up Python
@@ -49,4 +49,4 @@ jobs:
           docker build -t prithvi-ml ./ml-service
 
       - name: Workflow complete
-        run: echo "CI build finished. Connect a deployment provider (Render/Railway) to deploy containers."
+        run: echo "CI build finished successfully."
