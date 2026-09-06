@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger frontend deploy on Render
-        if: ${{ secrets.RENDER_FRONTEND_SERVICE_ID }}
+        if: ${{ secrets.RENDER_FRONTEND_SERVICE_ID != '' && secrets.RENDER_API_KEY != '' }}
         run: |
           curl -s -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_FRONTEND_SERVICE_ID }}/deploys" \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
@@ -17,7 +17,7 @@ jobs:
             -d '{}'
 
       - name: Trigger backend deploy on Render
-        if: ${{ secrets.RENDER_BACKEND_SERVICE_ID }}
+        if: ${{ secrets.RENDER_BACKEND_SERVICE_ID != '' && secrets.RENDER_API_KEY != '' }}
         run: |
           curl -s -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_BACKEND_SERVICE_ID }}/deploys" \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
@@ -25,9 +25,13 @@ jobs:
             -d '{}'
 
       - name: Trigger ml-service deploy on Render
-        if: ${{ secrets.RENDER_ML_SERVICE_ID }}
+        if: ${{ secrets.RENDER_ML_SERVICE_ID != '' && secrets.RENDER_API_KEY != '' }}
         run: |
           curl -s -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_ML_SERVICE_ID }}/deploys" \
             -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
             -H "Content-Type: application/json" \
             -d '{}'
+
+      - name: Workflow completed
+        run: echo "Deploy workflow completed successfully."
+
