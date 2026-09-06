@@ -1,0 +1,52 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build backend
+        working-directory: backend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install ML service dependencies
+        working-directory: ml-service
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build Docker images (no push)
+        run: |
+          docker build -t prithvi-frontend ./frontend
+          docker build -t prithvi-backend ./backend
+          docker build -t prithvi-ml ./ml-service
+
+      - name: Workflow complete
+        run: echo "CI build finished. Connect a deployment provider (Render/Railway) to deploy containers."

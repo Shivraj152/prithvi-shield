@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-950 text-slate-100 font-sans antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10B981;
+}
+
+/* Glassmorphism panel styling */
+.glass-panel {
+  background: rgba(18, 26, 44, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 41, 59, 0.6);
+}
+
+.glass-panel-heavy {
+  background: rgba(11, 17, 32, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(30, 41, 59, 0.9);
+}
+
+/* Fail-safe Dark GIS Map Tile Filter (Zero API Key Dependency) */
+.dark-gis-tile-filter {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.15) !important;
+}
+
+/* Pulsing alert rings */
+.pulse-emerald {
+  animation: pulse-emerald 2s infinite;
+}
+
+.pulse-red {
+  animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-emerald {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Neon accent gradients */
+.gradient-border-green {
+  position: relative;
+}
+.gradient-border-green::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to right, #10B981, #14B8A6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Mapbox control overrides */
+.mapboxgl-ctrl-group {
+  background: #121A2C !important;
+  border: 1px solid #1E293B !important;
+}
+.mapboxgl-ctrl-group button {
+  border-bottom: 1px solid #1E293B !important;
+}
+.mapboxgl-ctrl-group button span {
+  filter: invert(1) !important;
+}
+.mapboxgl-popup-content {
+  background: #121A2C !important;
+  color: #F8FAFC !important;
+  border: 1px solid #1E293B !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+  padding: 16px !important;
+}
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: #1E293B !important;
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: #1E293B !important;
+}
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  border-right-color: #1E293B !important;
+}
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  border-left-color: #1E293B !important;
+}
+.mapboxgl-popup-close-button {
+  color: #94A3B8 !important;
+  padding: 4px 8px !important;
+  outline: none !important;
+}
+.mapboxgl-popup-close-button:hover {
+  color: #EF4444 !important;
+  background: transparent !important;
+}
+
+/* Dynamic Cybernetic Radar Scan Sweeper */
+@keyframes radar-sweep {
+  0% { transform: translateY(-50px) rotate(-12deg); opacity: 0; }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.7; }
+  100% { transform: translateY(450px) rotate(-12deg); opacity: 0; }
+}
+.animate-radar-sweep {
+  animation: radar-sweep 5s linear infinite;
+}

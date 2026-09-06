@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B1120" />
+    <meta name="description" content="PRITHVI-SHIELD: AI-Powered Landslide Early Warning and Disaster Monitoring Control Hub for the North Eastern Region (NER) of India." />
+    <title>PRITHVI-SHIELD — NER Control Hub</title>
+    <script>
+      window.onerror = function(message, source, lineno, colno, error) {
+        var div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.inset = '0';
+        div.style.backgroundColor = '#0F172A';
+        div.style.color = '#EF4444';
+        div.style.padding = '40px';
+        div.style.fontFamily = 'monospace';
+        div.style.zIndex = '999999';
+        div.style.overflow = 'auto';
+        div.style.boxSizing = 'border-box';
+        div.innerHTML = '<h1 style="font-size: 24px; font-weight: bold; border-bottom: 2px solid #EF4444; padding-bottom: 10px; margin-top: 0;">CRITICAL LOAD-TIME CRASH</h1>' +
+                        '<p style="font-size: 16px; font-weight: bold; margin: 20px 0;">' + message + '</p>' +
+                        '<p style="font-size: 12px; color: #94A3B8;">Source: ' + source + ' | Line: ' + lineno + ' | Col: ' + colno + '</p>' +
+                        '<pre style="background-color: #1E293B; padding: 20px; border-radius: 8px; white-space: pre-wrap; font-size: 12px; margin-top: 20px;">' + (error && error.stack ? error.stack : 'No stack trace available') + '</pre>';
+        document.body.appendChild(div);
+        return false;
+      };
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event.reason || 'Unknown promise rejection';
+        var div = document.createElement('div');
+        div.style.position = 'fixed';
+        div.style.inset = '0';
+        div.style.backgroundColor = '#0F172A';
+        div.style.color = '#F59E0B';
+        div.style.padding = '40px';
+        div.style.fontFamily = 'monospace';
+        div.style.zIndex = '999999';
+        div.style.overflow = 'auto';
+        div.style.boxSizing = 'border-box';
+        div.innerHTML = '<h1 style="font-size: 24px; font-weight: bold; border-bottom: 2px solid #F59E0B; padding-bottom: 10px; margin-top: 0;">UNHANDLED PROMISE REJECTION</h1>' +
+                        '<p style="font-size: 16px; font-weight: bold; margin: 20px 0;">' + reason.toString() + '</p>' +
+                        '<pre style="background-color: #1E293B; padding: 20px; border-radius: 8px; white-space: pre-wrap; font-size: 12px; margin-top: 20px;">' + (reason.stack ? reason.stack : 'No stack trace available') + '</pre>';
+        document.body.appendChild(div);
+      });
+    </script>
+  </head>
+  <body class="bg-[#0B1120] text-slate-100 antialiased overflow-hidden">
+    <div id="root">
+      <div style="color: #10B981; padding: 40px; font-family: sans-serif; font-weight: bold; text-align: center;">
+        Loading PRITHVI-SHIELD NER Control Hub...
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

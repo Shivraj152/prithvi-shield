@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Production build outputs
+dist/
+**/dist/
+build/
+**/build/
+
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.env
+backend/.env
+frontend/.env
+
+# Temporary build scripts, logs, timestamps
+*.log
+*.timestamp*
+*.bak
+.gitignore.bak
+push_and_setup.ps1
+ml-service/venv/
+ml-service/__pycache__/
+ml-service/models/__pycache__/
